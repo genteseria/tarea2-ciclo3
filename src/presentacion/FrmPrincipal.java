@@ -1,5 +1,12 @@
 package presentacion;
 
+import entidades.Asignatura;
+import entidades.AsignaturaCalificacion;
+import entidades.Estudiante;
+import entidades.Matricula;
+import entidades.PeriodoAcademico;
+import java.util.ArrayList;
+
 /**
  *
  * @author deerfox@debian
@@ -12,6 +19,70 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
+        
+        int nVeces=1;
+        double nota = -1.0;
+        boolean estado = true;
+        Estudiante e1 = new Estudiante("1", "Mostacero Camacho","Jonathan Smith", "Hipolito Unaue", "72697001", true, "jona", "123");
+        Estudiante e2 = new Estudiante("2", "Castillo Raggio","Nicolas Smith", "Hipolito Unaue", "72697002", true, "nicolas", "123");
+        Estudiante e3 = new Estudiante("3", "Huamajulca Guerrero","Diego Smith", "Hipolito Unaue", "72697003", true, "diego", "123");
+        Estudiante e4 = new Estudiante("4", "Arrisbaplata Revilla","Alexs Smith", "Hipolito Unaue", "726970041", true, "alexs", "123");
+        Estudiante e5 = new Estudiante("5", "Carrera Yzquierdo","Kevin Smith", "Hipolito Unaue", "72697005", true, "kevin", "123");
+        FrmRegistrarEstudiante.estudiantes.add(e1);
+        FrmRegistrarEstudiante.estudiantes.add(e2);
+        FrmRegistrarEstudiante.estudiantes.add(e3);
+        FrmRegistrarEstudiante.estudiantes.add(e4);
+        FrmRegistrarEstudiante.estudiantes.add(e5);
+        
+        Asignatura a1 = new Asignatura("1","Programacion", 4, 1,true);
+        Asignatura a2 = new Asignatura("2","Matematica", 4, 1,true);
+        Asignatura a3 = new Asignatura("3","Estadistica", 4, 1,true);
+        Asignatura a4 = new Asignatura("4","Ingenieria Grafica", 4, 1,true);
+        Asignatura a5 = new Asignatura("5","SISTEMICA", 4, 1,true);
+        Asignatura a6 = new Asignatura("10","Desarrollo Web", 4, 2,true);
+        Asignatura a7 = new Asignatura("6","heack Etico", 4, 2,true);
+        Asignatura a8 = new Asignatura("7","desarrollo Moviles", 4, 2,true);
+        Asignatura a9 = new Asignatura("8","Bing bang", 4, 2,true);
+        Asignatura a0 = new Asignatura("9","Software", 4, 2,true);
+        
+        AsignaturaCalificacion c1 = new AsignaturaCalificacion(a0, nVeces, nota, estado);
+        AsignaturaCalificacion c2 = new AsignaturaCalificacion(a1, nVeces, nota, estado);
+        AsignaturaCalificacion c3 = new AsignaturaCalificacion(a2, nVeces, nota, estado);
+        AsignaturaCalificacion c4 = new AsignaturaCalificacion(a3, nVeces, nota, estado);
+        AsignaturaCalificacion c5 = new AsignaturaCalificacion(a9, nVeces, nota, estado);
+        AsignaturaCalificacion c6 = new AsignaturaCalificacion(a8, nVeces, nota, estado);
+        AsignaturaCalificacion c7 = new AsignaturaCalificacion(a7, nVeces, nota, estado);
+        
+        FrmRegistrarAsignatura.asignaturas.add(a1);
+        FrmRegistrarAsignatura.asignaturas.add(a2);
+        FrmRegistrarAsignatura.asignaturas.add(a3);
+        FrmRegistrarAsignatura.asignaturas.add(a4);
+        FrmRegistrarAsignatura.asignaturas.add(a5);
+        FrmRegistrarAsignatura.asignaturas.add(a6);
+        FrmRegistrarAsignatura.asignaturas.add(a7);
+        FrmRegistrarAsignatura.asignaturas.add(a8);
+        FrmRegistrarAsignatura.asignaturas.add(a9);
+        FrmRegistrarAsignatura.asignaturas.add(a0);
+        
+        ArrayList<AsignaturaCalificacion> asigna = new ArrayList<>();
+        asigna.add(c1);
+        asigna.add(c2);
+        asigna.add(c3);
+        asigna.add(c4);
+        asigna.add(c5);
+        PeriodoAcademico pe = new PeriodoAcademico(2021,"I");
+        Matricula ma = new Matricula(pe, "10/13/2021", e5, asigna);
+        FrmAlumno.matriculas.add(ma);
+        
+        ArrayList<AsignaturaCalificacion> asigna2 = new ArrayList<>();
+        asigna2.add(c6);
+        asigna2.add(c7);
+        asigna2.add(c3);
+        asigna2.add(c4);
+        asigna2.add(c5);
+        PeriodoAcademico pe1 = new PeriodoAcademico(2021,"I");
+        Matricula ma2 = new Matricula(pe1, "10/13/2021", e4, asigna2);
+        FrmAlumno.matriculas.add(ma2);
     }
 
     /**
@@ -23,21 +94,59 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Alumno");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Docente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(157, 157, 157))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrmLoginAlumno c = new FrmLoginAlumno();
+        c.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        FrmDoncente c =new FrmDoncente();
+        c.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -75,5 +184,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
