@@ -23,6 +23,8 @@ public class Matricula {
         this.fecha = fecha;
         this.alumno = alumno;
         this.asignaturas = asignaturas;
+        //System.out.println("Tamaño  M: "+getTamaño());
+        
     }
 
     public ArrayList<AsignaturaCalificacion> getAsignaturas() {
@@ -84,9 +86,14 @@ public class Matricula {
     
     
      public int getTamaño() {
+         int suma=0;
+         for (int i = 0; i < asignaturas.size(); i++) {
+           suma+=asignaturas.get(i).getTamaño();
+         }
+         
         return (getPerido().getTamaño()
                 + getFecha().length()*2+ 2
-                + getAlumno().getTamaño());
-
+                + getAlumno().getTamaño()
+                +suma);
     }
 }

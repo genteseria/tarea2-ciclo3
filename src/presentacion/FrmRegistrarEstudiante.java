@@ -10,6 +10,7 @@ import javax.swing.*;
 import entidades.*;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import logica.AlumnoBL;
 
 /**
  *
@@ -260,14 +261,13 @@ public class FrmRegistrarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         
+         String mensaje="";
         Estudiante alumno = new Estudiante(txtCodigo.getText(), txtApellidos.getText(), txtNombre.getText(), 
                 txtDirecion.getText(), txtDni.getText(), true,txtUsuario.getText(),txtContraseña.getText());
-        estudiantes.add(alumno);
-//        PeriodoAcademico periodo = new PeriodoAcademico(Integer.parseInt(String.valueOf(txtAño.getSelectedItem()))
-//                ,String.valueOf(txtSemestre.getSelectedItem()));
-        
-//        Matricula matriculas = new Matricula(periodo, txtFecha.getDateFormatString(), alumno, escogidas);
+        mensaje = AlumnoBL.escribirEstudiante(txtCodigo.getText(), txtApellidos.getText(), txtNombre.getText(), 
+                txtDirecion.getText(), txtDni.getText(), true,txtUsuario.getText(),txtContraseña.getText());
+        JOptionPane.showMessageDialog(null, mensaje);
+        estudiantes = (ArrayList<Estudiante>) AlumnoBL.llenarColeccion();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

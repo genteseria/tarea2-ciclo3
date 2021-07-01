@@ -107,7 +107,7 @@ public class FrmMatriculas extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 270, 180));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 320, 200));
 
         jButton3.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jButton3.setText("ATRÁS");
@@ -122,7 +122,7 @@ public class FrmMatriculas extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 210, 181));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 210, 200));
 
         jButton1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jButton1.setText("VISUALIZAR ASIGNATURAS");

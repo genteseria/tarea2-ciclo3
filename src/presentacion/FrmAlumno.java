@@ -11,8 +11,12 @@ import entidades.AsignaturaCalificacion;
 import entidades.Estudiante;
 import entidades.Matricula;
 import entidades.PeriodoAcademico;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import logica.MatriculaBL;
 
 /**
  *
@@ -82,7 +86,7 @@ public class FrmAlumno extends javax.swing.JFrame {
         public void elegirAsignatura(){
         try {
              int nVeces=1;
-        double nota = -1.0;
+        double nota = 21;
         boolean estado = true;
             int creditos=0;
         int creditosAnterior= Integer.parseInt(txtTotalCreditos.getText());
@@ -418,9 +422,16 @@ public class FrmAlumno extends javax.swing.JFrame {
                 Año = 2021;
             }
             PeriodoAcademico pe = new PeriodoAcademico(Año, semestre);
-            String fecha = "26/04/2021";
-            Matricula matricula = new Matricula(pe, fecha, alumno,asignaturasSeleccionadas);
-            matriculas.add(matricula);
+            String fecha;
+            Date date = new Date();
+           DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            fecha = dateFormat.format(date);
+//            Matricula matricula = new Matricula(pe, fecha, alumno,asignaturasSeleccionadas);
+            String mensaje = "";
+            mensaje=MatriculaBL.escribirMatricula(pe, fecha, alumno, asignaturasSeleccionadas);
+            JOptionPane.showMessageDialog(null, mensaje);
+            matriculas = (ArrayList<Matricula>) MatriculaBL.llenarColeccion();
+////            matriculas.add(matricula);
             JOptionPane.showMessageDialog(null,"Matricula Realizada con exito","Mensaje",1);
             dispose();
             FrmLoginEstudiante c = new FrmLoginEstudiante();

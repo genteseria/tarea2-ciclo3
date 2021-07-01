@@ -21,6 +21,7 @@ public class AsignaturaCalificacion {
         this.contador = contador;
         this.calificacion = calificacion;
         this.estado = estado;
+        
     }
 
     
@@ -56,6 +57,10 @@ public class AsignaturaCalificacion {
         this.estado = estado;
     }
     
-    
+    public int getTamaño(){
+         return (getAsignatura().getTamaño()
+                + 8
+                +1);
+    }
     
 }

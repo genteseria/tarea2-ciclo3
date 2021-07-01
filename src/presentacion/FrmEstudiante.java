@@ -26,6 +26,10 @@ public class FrmEstudiante extends javax.swing.JFrame {
     static int contador;
     private Hora hora;
     public static boolean estado;
+    public static String nombre;
+    public static String apellidos;
+    public static String carrera;
+    public static String direccion;
     /**
      * Creates new form FrmEstudiante
      */
@@ -34,6 +38,10 @@ public class FrmEstudiante extends javax.swing.JFrame {
         movimiento();       
         jButton2.setBackground(Color.BLACK);
         jButton1.setBackground(Color.BLACK);
+        labelNombre.setText(nombre);
+        labelApellidos.setText(apellidos);
+        labelDirrecion.setText(direccion);
+        labelNombre.setText(nombre);
 
     }
     

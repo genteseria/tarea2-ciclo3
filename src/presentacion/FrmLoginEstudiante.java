@@ -28,15 +28,20 @@ public class FrmLoginEstudiante extends javax.swing.JFrame {
         matriculados = FrmAlumno.matriculas;
     }
 
-    public boolean Verificar(int i) {
+    public boolean Verificar(int matriculado) {
         boolean estado = true;
+        try {
 
-        for (int j = 0; j < matriculados.get(i).getAsignaturas().size(); j++) {
-            if (matriculados.get(i).getAsignaturas().get(j).getContador() == 4) {
-                estado = false;
+            for (int j = 0; j < matriculados.get(matriculado).getAsignaturas().size(); j++) {
+                
+                if (matriculados.get(matriculado).getAsignaturas().get(j).getContador() == 4) {
+                    estado = false;
+//                    System.out.println(matriculados.get(matriculado).getAlumno().getNombre());
+                }
             }
-        }
 
+        } catch (Exception e) {
+        }
         return estado;
     }
 
@@ -181,52 +186,58 @@ public class FrmLoginEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseDragged
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-          int veri = 0;
-            int cont = -1;
-        
+        int veri = 0;
+        int cont = -1;
+
         for (int i = 0; i < FrmRegistrarEstudiante.estudiantes.size(); i++) {
             if (txtCorreo.getText().equals(FrmRegistrarEstudiante.estudiantes.get(i).getUsuario())
                     && txtContraseña.getText().equals(FrmRegistrarEstudiante.estudiantes.get(i).getContra())) {
                 cont = i;
+                veri=i;
             }
 
         }
-        if(cont!=-1){
+        if (cont != -1) {
             FrmEstudiante.estado = false;
-        for (int i = 0; i < matriculados.size(); i++) {
-            
-            if(matriculados.get(i).getAlumno().getUsuario().equals(txtCorreo.getText()) && 
-                    matriculados.get(i).getAlumno().getContra().equals(txtContraseña.getText())){
-                FrmCalificacion.cursos = matriculados.get(i).cursos();
-                FrmCalificacion.notas = matriculados.get(i).notas();
-                FrmEstudiante.estado = true;
-                veri = i;
+            for (int i = 0; i < matriculados.size(); i++) {
+
+                if (matriculados.get(i).getAlumno().getUsuario().equals(txtCorreo.getText())
+                        && matriculados.get(i).getAlumno().getContra().equals(txtContraseña.getText())) {
+                    FrmCalificacion.cursos = matriculados.get(i).cursos();
+                    FrmCalificacion.notas = matriculados.get(i).notas();
+                    FrmEstudiante.estado = true;
+//                    JOptionPane.showMessageDialog(null,"Posi : "+i +"\nNombre "+);
+//                    veri = i;
+                }
+
             }
-            
-        }
-        if(Verificar(veri)){
-             if(cont!=-1){
-            dispose();
-            JOptionPane.showMessageDialog(null, "Bienvenido " + FrmRegistrarEstudiante.estudiantes.get(cont).getNombre() + " "
-                    + FrmRegistrarEstudiante.estudiantes.get(cont).getApellidos(), "Mensaje", 1);
+            if (Verificar(veri)) {
+                if (cont != -1) {
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Bienvenido " + FrmRegistrarEstudiante.estudiantes.get(cont).getNombre() + " "
+                            + FrmRegistrarEstudiante.estudiantes.get(cont).getApellidos(), "Mensaje", 1);
 //            FrmCalificacion.cursos=FrmRegistrarEstudiante.estudiantes.get(cont).
-            FrmAlumno.alumno = FrmRegistrarEstudiante.estudiantes.get(cont);
-            FrmEstudiante c = new FrmEstudiante();
-            c.setVisible(true);
-            
-        }else{
+                    FrmAlumno.alumno = FrmRegistrarEstudiante.estudiantes.get(cont);
+                    FrmEstudiante.nombre = FrmRegistrarEstudiante.estudiantes.get(cont).getNombre();
+                    FrmEstudiante.apellidos = FrmRegistrarEstudiante.estudiantes.get(cont).getApellidos();
+                    FrmEstudiante.direccion = FrmRegistrarEstudiante.estudiantes.get(cont).getDireccion();
+
+                    FrmEstudiante c = new FrmEstudiante();
+                    c.setVisible(true);
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Datos Invalidos. Vuelva a escribir", "Mensaje", 0);
                     txtCorreo.setText(null);
                     txtContraseña.setText(null);
+                }
+
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Estimado Alumno, Usted ha sido retirado de la universidad\n"
+                        + "por llevar por cuarta vez el mismo curso, Bendiciones");
+            }
+
         }
-        
-        dispose();
-        }else{
-            JOptionPane.showMessageDialog(null,"Estimado Alumno, Usted ha sido retirado de la universidad\n"
-                   + "por llevar por cuarta vez el mismo curso, Bendiciones");
-        }
-       
-  }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void txtContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMouseClicked

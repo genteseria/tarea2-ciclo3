@@ -41,6 +41,7 @@ public class PeriodoAcademico {
     public PeriodoAcademico(int año, String semestre) {
         this.año = año;
         this.semestre = semestre;
+        
     }
 
     @Override

@@ -9,6 +9,8 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import logica.AlumnoBL;
+import logica.AsignaturaBL;
 
 /**
  *
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class FrmRegistrarAsignatura extends javax.swing.JFrame {
     public static ArrayList<Asignatura> asignaturas =new ArrayList<Asignatura>();
-
+    
     /**
      * Creates new form FrmAsignatura
      */
@@ -54,18 +56,23 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(111, 183, 231));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel1.setText("Codigo : ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 34, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel2.setText("Asignatura : ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 73, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel3.setText("N° Creditos :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 108, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel4.setText("Ciclo :");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 148, -1, -1));
 
         txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +80,7 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
                 txtCodigoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 38, 143, 29));
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +88,7 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 73, 143, 29));
 
         jButton1.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
         jButton1.setText("Nuevo");
@@ -88,6 +97,7 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 196, 99, -1));
 
         jButton2.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
         jButton2.setText("Registrar");
@@ -96,6 +106,7 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 196, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
         jButton3.setText("Salir");
@@ -104,78 +115,15 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
 
         txtCreditos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCreditos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        jPanel1.add(txtCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 110, 104, 32));
 
         txtCiclos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCiclos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCreditos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCiclos, 0, 104, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(txtNombre)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton2)))
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(txtCiclos)))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addGap(26, 26, 26))
-        );
+        jPanel1.add(txtCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 153, 104, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 350, 280));
 
@@ -239,15 +187,23 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String mensaje = "";
         int creditos = Integer.parseInt(String.valueOf(txtCreditos.getSelectedItem()));
         int ciclo = Integer.parseInt(String.valueOf(txtCiclos.getSelectedItem()));
-        Asignatura asignatura = new Asignatura(txtCodigo.getText(), txtNombre.getText(),creditos, ciclo,true);
-        asignaturas.add(asignatura);
+        String codigo = txtCodigo.getText();
+        String nombre = txtNombre.getText();
+        //Asignatura asignatura = new Asignatura(txtCodigo.getText(), txtNombre.getText(),creditos, ciclo,true);
+        
+        mensaje = AsignaturaBL.escribirAsignatura(codigo, nombre, creditos, ciclo,true);
+        JOptionPane.showMessageDialog(null, mensaje);
+        asignaturas = (ArrayList<Asignatura>) AsignaturaBL.llenarColeccion();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        txtCodigo.setText(null);
        txtNombre.setText(null);
+       txtCreditos.setSelectedIndex(0);
+       txtCiclos.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked

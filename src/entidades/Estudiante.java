@@ -90,6 +90,7 @@ public class Estudiante {
     }
 
     public Estudiante(String codigo, String apellidos, String nombre, String direccion, String dni, boolean activo, String usuario, String contra) {
+       
         this.codigo = codigo;
         this.apellidos = apellidos;
         this.nombre = nombre;
@@ -98,6 +99,7 @@ public class Estudiante {
         this.activo = activo;
         this.usuario = usuario;
         this.contra = contra;
+        
     }
     
     public int getTamaño() {
@@ -106,6 +108,9 @@ public class Estudiante {
                 + getApellidos().length()*2+ 2
                 + getDireccion().length()*2+ 2
                 + getDni().length()*2+ 2
+                 + getUsuario().length()*2+ 2
+                 + getContra().length()*2+ 2
                 +1);
     }
+    
 }
