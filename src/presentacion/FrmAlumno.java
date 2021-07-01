@@ -42,10 +42,10 @@ public class FrmAlumno extends javax.swing.JFrame {
         try {
             String sele = String.valueOf(jcBPeriodo.getSelectedItem());
         if(sele.equals("Nivelacion")){
-            txtFiltroAsignatura.setText(null);
+            
             JOptionPane.showMessageDialog(null,"Nivelacion");
         }else if(sele.equals("2021-I")){
-            txtFiltroAsignatura.setText(null);
+            
             for (int i = 0; i < asignatu.size(); i++) {
                 
                 if(asignatu.get(i).getCiclo()==1){
@@ -62,7 +62,7 @@ public class FrmAlumno extends javax.swing.JFrame {
             tablaCursosDisponibles.setModel(tma);
             
         }else if(sele.equals("2021-II")){
-            txtFiltroAsignatura.setText(null);
+            
             
             for (int i = 0; i < asignatu.size(); i++) {
                 if(asignatu.get(i).getCiclo()==2){
@@ -168,9 +168,6 @@ public class FrmAlumno extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtTotalCreditos = new javax.swing.JTextField();
-        txtFiltroAsignatura = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -314,20 +311,6 @@ public class FrmAlumno extends javax.swing.JFrame {
         txtTotalCreditos.setText("0");
         jPanel1.add(txtTotalCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 12, 40, 30));
 
-        txtFiltroAsignatura.setBorder(null);
-        txtFiltroAsignatura.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtFiltroAsignaturaKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txtFiltroAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 90, 20));
-
-        jLabel4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel4.setText("Filtro Asignatura :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, 20));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 90, -1));
-
         jButton3.setBackground(new java.awt.Color(51, 51, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jButton3.setText("Agregar");
@@ -440,10 +423,6 @@ public class FrmAlumno extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtFiltroAsignaturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroAsignaturaKeyTyped
-        
-    }//GEN-LAST:event_txtFiltroAsignaturaKeyTyped
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             elegirAsignatura();
@@ -461,54 +440,21 @@ public class FrmAlumno extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmAlumno().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JComboBox<String> jcBPeriodo;
     private javax.swing.JTable tablaCursosDisponibles;
     private javax.swing.JTable tablaMatriculados;
-    private javax.swing.JTextField txtFiltroAsignatura;
     private javax.swing.JTextField txtTotalCreditos;
     // End of variables declaration//GEN-END:variables
     private ArrayList<AsignaturaCalificacion> asignaturasSeleccionadas= new ArrayList<>();

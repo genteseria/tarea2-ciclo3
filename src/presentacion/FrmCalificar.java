@@ -7,11 +7,13 @@ package presentacion;
 
 import ModelosTabla.ModeloCalificacion;
 import ModelosTabla.ModeloVista;
+import datos.MatriculaDAL;
 import entidades.AsignaturaCalificacion;
 import entidades.Matricula;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import logica.MatriculaBL;
 
 /**
  *
@@ -21,7 +23,7 @@ public class FrmCalificar extends javax.swing.JFrame {
     ModeloCalificacion tma;
     ArrayList<AsignaturaCalificacion> asignaturaCalis;
     String apellido;
-    ArrayList<Matricula> matriculas = FrmAlumno.matriculas;
+    ArrayList<Matricula> matriculas = (ArrayList<Matricula>) MatriculaBL.llenarColeccion();
     int asignaturaSeleccionada;
     
     /**
@@ -296,16 +298,18 @@ public class FrmCalificar extends javax.swing.JFrame {
         }
         
         if(ver!=-1){
-               
-            matriculas.get(ver).getAsignaturas().get(asignaturaSeleccionada).setCalificacion(Double.parseDouble(txtCalificacion.getText()));
-                    veces = matriculas.get(ver).getAsignaturas().get(asignaturaSeleccionada).getContador();
+            Matricula m =null;
+            m = matriculas.get(ver);
+            m.getAsignaturas().get(asignaturaSeleccionada).setCalificacion(Double.parseDouble(txtCalificacion.getText()));
+                    veces =m.getAsignaturas().get(asignaturaSeleccionada).getContador();
                     if(veces==4){
                         
                     }else{
                         if(Double.parseDouble(txtCalificacion.getText()) <= 10.4){
                          veces++;
                           
-                           matriculas.get(ver).getAsignaturas().get(asignaturaSeleccionada).setContador(veces);
+                           m.getAsignaturas().get(asignaturaSeleccionada).setContador(veces);
+                           MatriculaDAL.setMatricula(ver, m);
                     }
                     }
                     
@@ -331,37 +335,7 @@ public class FrmCalificar extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCalificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCalificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCalificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCalificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmCalificar().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
