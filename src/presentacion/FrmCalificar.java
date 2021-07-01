@@ -288,7 +288,8 @@ public class FrmCalificar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //        FrmAlumno.matriculas.get(1).getAsignaturas().
-      int veces;
+      if(Integer.parseInt( txtCalificacion.getText())>=0 && Integer.parseInt( txtCalificacion.getText())<=20){
+          int veces;
       int ver = -1;
         for (int i = 0; i < matriculas.size(); i++) {
             if(apellido.equals(txtApellido.getText()) && txtCurso.getText().equals(matriculas.get(i).getAsignaturas().get(asignaturaSeleccionada).getAsignatura().getNombre()) ){
@@ -302,6 +303,8 @@ public class FrmCalificar extends javax.swing.JFrame {
             m = matriculas.get(ver);
             m.getAsignaturas().get(asignaturaSeleccionada).setCalificacion(Double.parseDouble(txtCalificacion.getText()));
                     veces =m.getAsignaturas().get(asignaturaSeleccionada).getContador();
+                    m.getAsignaturas().get(asignaturaSeleccionada).setContador(veces);
+                           MatriculaDAL.setMatricula(ver, m);
                     if(veces==4){
                         
                     }else{
@@ -324,6 +327,14 @@ public class FrmCalificar extends javax.swing.JFrame {
          txtCalificacion.setText("");
           txtCurso.setText("");
           txtNveces.setText("");
+      }else{
+          JOptionPane.showMessageDialog(null,"Ingrese una nota válida","Advertencia",2);
+            txtCalificacion.setText("");
+          txtCurso.setText("");
+          txtNveces.setText("");
+      }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

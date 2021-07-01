@@ -167,7 +167,7 @@ public class FrmLoginEstudiante extends javax.swing.JFrame {
     int x, y;
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         dispose();
-        FrmPrincipalN c = new FrmPrincipalN();
+        FrmPrincipal c = new FrmPrincipal();
         c.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 

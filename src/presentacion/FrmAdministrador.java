@@ -228,19 +228,20 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-       FrmListadoAsignaturas c = new FrmListadoAsignaturas();
+        dispose();
+        FrmListadoAsignaturas c = new FrmListadoAsignaturas();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
        dispose();
-        FrmPrincipalN c = new FrmPrincipalN();
+        FrmPrincipal c = new FrmPrincipal();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        FrmPrincipalN c = new FrmPrincipalN();
+        FrmPrincipal c = new FrmPrincipal();
         c.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
     int  xx,xy;
