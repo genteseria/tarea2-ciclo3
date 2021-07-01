@@ -206,6 +206,7 @@ public class FrmLoginEstudiante extends javax.swing.JFrame {
                     FrmCalificacion.cursos = matriculados.get(i).cursos();
                     FrmCalificacion.notas = matriculados.get(i).notas();
                     FrmEstudiante.estado = true;
+                    FrmCalificacion.matricula = matriculados.get(i);
 //                    JOptionPane.showMessageDialog(null,"Posi : "+i +"\nNombre "+);
 //                    veri = i;
                 }

@@ -77,7 +77,7 @@ public class MatriculaDAL {
 
                     //ASIGNATURAS
                     for (int j = 0; j < matricula.getAsignaturas().size(); j++) {
-                        flujo.writeUTF(matricula.getAsignaturas().get(i).getAsignatura().getCodigo());
+                        flujo.writeUTF(matricula.getAsignaturas().get(j).getAsignatura().getCodigo());
                         flujo.writeUTF(matricula.getAsignaturas().get(j).getAsignatura().getNombre());
                         flujo.writeInt(matricula.getAsignaturas().get(j).getAsignatura().getCreditos());
                         flujo.writeInt(matricula.getAsignaturas().get(j).getAsignatura().getCiclo());
