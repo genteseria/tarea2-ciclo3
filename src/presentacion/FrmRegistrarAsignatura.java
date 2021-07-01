@@ -50,6 +50,7 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro :: Asignatura");
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(111, 183, 231));
@@ -219,7 +220,7 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 40));
 
-        setSize(new java.awt.Dimension(362, 358));
+        setSize(new java.awt.Dimension(346, 319));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,8 +234,7 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
-         
-        FrmDoncente ventana = new FrmDoncente();
+        FrmAdministrador ventana = new FrmAdministrador();
         ventana.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -251,7 +251,9 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        System.exit(0);
+        dispose();
+        FrmAdministrador ventana = new FrmAdministrador();
+        ventana.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked

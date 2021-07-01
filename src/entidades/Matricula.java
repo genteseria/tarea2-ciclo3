@@ -70,7 +70,7 @@ public class Matricula {
         public String notas() {
         String mensaje = "";
         for (int i = 0; i < asignaturas.size(); i++) {
-            if(asignaturas.get(i).getCalificacion()==-1){
+            if(asignaturas.get(i).getCalificacion()==21){
                 mensaje+="Sin calificar"+"\n\n";
             }else{
                 mensaje+=asignaturas.get(i).getCalificacion()+"\n\n";

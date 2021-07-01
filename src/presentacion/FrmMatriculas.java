@@ -54,7 +54,7 @@ public class FrmMatriculas extends javax.swing.JFrame {
         String mensaje2 = " CRÉDITOS\n\n";
         for (int i = 0; i < asignaturas.size(); i++) {
             mensaje +="      "+ (i+1) +"-"+ asignaturas.get(i).getAsignatura().getNombre()+"\n";
-            mensaje2 +=" -> "+asignaturas.get(i).getAsignatura().getCreditos()+"\n";
+            mensaje2 +=" N° "+asignaturas.get(i).getAsignatura().getCreditos()+"\n";
         }
         jTextArea1.setText(mensaje);
         jTextArea2.setText(mensaje2);
@@ -69,18 +69,24 @@ public class FrmMatriculas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -94,34 +100,44 @@ public class FrmMatriculas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 28, 680, 176));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 680, 176));
 
         jTextArea1.setEditable(false);
+        jTextArea1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 160, 180));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 270, 180));
 
-        jButton3.setText("Dispose()");
+        jButton3.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jButton3.setText("ATRÁS");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 467, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 480, -1, -1));
 
-        jButton1.setText("Ver cursos");
+        jTextArea2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 210, 181));
+
+        jButton1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jButton1.setText("VISUALIZAR ASIGNATURAS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
 
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
+        jLabel1.setText("ALUMNOS MATRICULADOS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 100, 181));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 550));
 
         pack();
         setLocationRelativeTo(null);
@@ -129,6 +145,8 @@ public class FrmMatriculas extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
+        FrmAdministrador c = new FrmAdministrador();
+        c.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -173,6 +191,8 @@ public class FrmMatriculas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

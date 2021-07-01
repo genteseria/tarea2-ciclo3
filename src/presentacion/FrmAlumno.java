@@ -29,7 +29,12 @@ public class FrmAlumno extends javax.swing.JFrame {
     }
     
         public void cambiar(){
+            
             ArrayList<Asignatura> muestreo = new ArrayList<>();
+            ArrayList<Asignatura> asignatu = FrmRegistrarAsignatura.asignaturas;
+           
+            
+            
         try {
             String sele = String.valueOf(jcBPeriodo.getSelectedItem());
         if(sele.equals("Nivelacion")){
@@ -37,23 +42,35 @@ public class FrmAlumno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Nivelacion");
         }else if(sele.equals("2021-I")){
             txtFiltroAsignatura.setText(null);
-            ArrayList<Asignatura> asignatu = FrmRegistrarAsignatura.asignaturas;
             for (int i = 0; i < asignatu.size(); i++) {
+                
                 if(asignatu.get(i).getCiclo()==1){
-                    muestreo.add(asignatu.get(i));
+                    if(asignatu.get(i).isEstado()){
+                        muestreo.add(asignatu.get(i));
+                    }
                 } 
+                
             }
+            
+            
+            
             tma = new ModeloAsignatura(muestreo);
             tablaCursosDisponibles.setModel(tma);
             
         }else if(sele.equals("2021-II")){
             txtFiltroAsignatura.setText(null);
-            ArrayList<Asignatura> asignatu = FrmRegistrarAsignatura.asignaturas;
+            
             for (int i = 0; i < asignatu.size(); i++) {
                 if(asignatu.get(i).getCiclo()==2){
-                    muestreo.add(asignatu.get(i));
+                    if(asignatu.get(i).isEstado()){
+                     muestreo.add(asignatu.get(i));
+                    }
+                    
                 } 
             }
+            
+
+            
             tma = new ModeloAsignatura(muestreo);
             tablaCursosDisponibles.setModel(tma);
         }
@@ -152,7 +169,6 @@ public class FrmAlumno extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -272,7 +288,7 @@ public class FrmAlumno extends javax.swing.JFrame {
                 jcBPeriodoActionPerformed(evt);
             }
         });
-        jPanel1.add(jcBPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 180, 30));
+        jPanel1.add(jcBPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 180, 30));
 
         jButton2.setBackground(new java.awt.Color(51, 51, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -319,41 +335,24 @@ public class FrmAlumno extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 120, 50));
 
-        jButton4.setText("Dispose()");
+        jButton4.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jButton4.setText("Atrás");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 460, -1, -1));
-
-        jButton1.setText("Calificacion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(3, 3, 3)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                    .addGap(4, 4, 4)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(11, 11, 11)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(12, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
         );
 
         pack();
@@ -423,6 +422,9 @@ public class FrmAlumno extends javax.swing.JFrame {
             Matricula matricula = new Matricula(pe, fecha, alumno,asignaturasSeleccionadas);
             matriculas.add(matricula);
             JOptionPane.showMessageDialog(null,"Matricula Realizada con exito","Mensaje",1);
+            dispose();
+            FrmLoginEstudiante c = new FrmLoginEstudiante();
+            c.setVisible(true);
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -441,12 +443,9 @@ public class FrmAlumno extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
+        FrmEstudiante c = new FrmEstudiante();
+        c.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       FormularioAlumno c = new FormularioAlumno();
-       c.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -484,7 +483,6 @@ public class FrmAlumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

@@ -273,8 +273,8 @@ public class FrmRegistrarEstudiante extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        
         dispose();
-//        FrmAdministrador ventana = new FrmAdministrador();
-//        ventana.setVisible(true);
+        FrmAdministrador ventana = new FrmAdministrador();
+        ventana.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -370,6 +370,5 @@ public class FrmRegistrarEstudiante extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
     public static ArrayList<Estudiante> estudiantes = new ArrayList<>();
-    private ArrayList<Matricula> matriculas = new ArrayList<>();
-    private ArrayList<Asignatura> escogidas = new ArrayList<>();
+
 }
