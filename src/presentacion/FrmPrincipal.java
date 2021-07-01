@@ -237,16 +237,25 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-           
-        try {
-             String url = "ayuda.pdf";
+    
+         try {
+            String url = "ayuda.pdf";
             ProcessBuilder p = new ProcessBuilder();
-            p.command("cmd.exe", "/c", url);
+            
+            if (System.getProperty("os.name").contains("Windows")){
+                p.command("cmd.exe", "/c", url);
+            } else if (System.getProperty("os.name").contains("Linux")) {
+                p.command("xdg-open", url);
+            } else {
+                p.command("open", url);
+            }
+            
             p.start();
+            
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,"No se pudo Abrir","Advertencia",2);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

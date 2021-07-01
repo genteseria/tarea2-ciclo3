@@ -92,7 +92,14 @@ public class ClassPdf {
             JOptionPane.showMessageDialog(null, "Abriendo pdf...");
             String url = getRuta();
             ProcessBuilder p = new ProcessBuilder();
-            p.command("cmd.exe", "/c", url);
+              if (System.getProperty("os.name").contains("Windows")){
+                p.command("cmd.exe", "/c", url);
+            } else if (System.getProperty("os.name").contains("Linux")) {
+                p.command("xdg-open", url);
+            } else {
+                p.command("open", url);
+            }
+            
             p.start();
 
         } catch (Exception e) {
