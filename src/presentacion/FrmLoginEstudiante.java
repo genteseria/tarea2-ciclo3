@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
-/**
- *
- * @author HP
- */
 public class FrmLoginEstudiante extends javax.swing.JFrame {
 
     private ArrayList<Matricula> matriculados;
@@ -33,7 +29,7 @@ public class FrmLoginEstudiante extends javax.swing.JFrame {
         try {
 
             for (int j = 0; j < matriculados.get(matriculado).getAsignaturas().size(); j++) {
-                
+
                 if (matriculados.get(matriculado).getAsignaturas().get(j).getContador() == 4) {
                     estado = false;
 //                    System.out.println(matriculados.get(matriculado).getAlumno().getNombre());
@@ -193,7 +189,7 @@ public class FrmLoginEstudiante extends javax.swing.JFrame {
             if (txtCorreo.getText().equals(FrmRegistrarEstudiante.estudiantes.get(i).getUsuario())
                     && txtContraseña.getText().equals(FrmRegistrarEstudiante.estudiantes.get(i).getContra())) {
                 cont = i;
-                veri=i;
+                veri = i;
             }
 
         }
@@ -270,7 +266,6 @@ public class FrmLoginEstudiante extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

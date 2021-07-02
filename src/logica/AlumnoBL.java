@@ -20,8 +20,8 @@ public class AlumnoBL {
     public static String escribirEstudiante(String codigo, String apellidos, String nombre, String direccion, String dni, boolean activo, String usuario, String contra) {
         String respuesta = "";
         if (nombre.trim().length() > 0 && codigo.trim().length() > 0
-                && apellidos.trim().length() > 0 && direccion.trim().length()>0  && dni.trim().length()>0 && usuario.trim().length()>0
-                && contra.trim().length()>0) {
+                && apellidos.trim().length() > 0 && direccion.trim().length() > 0 && dni.trim().length() > 0 && usuario.trim().length() > 0
+                && contra.trim().length() > 0) {
             estudiante = new Estudiante(codigo, apellidos, nombre, direccion, dni, activo, usuario, contra);
             respuesta = AlumnoDAL.escribirEstudiante(estudiante);
         } else {

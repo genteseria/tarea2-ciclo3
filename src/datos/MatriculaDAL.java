@@ -122,8 +122,8 @@ public class MatriculaDAL {
         ArrayList<AsignaturaCalificacion> asignas = new ArrayList<>();
         Matricula matricula = null;
         Estudiante alumno = null;
-        PeriodoAcademico peri= null;
-         AsignaturaCalificacion asignatura = null;
+        PeriodoAcademico peri = null;
+        AsignaturaCalificacion asignatura = null;
         Asignatura a = null;
         try {
             creaFileMatricula();
@@ -132,7 +132,7 @@ public class MatriculaDAL {
             anio = flujo.readInt();
             semestre = flujo.readUTF();
             peri = new PeriodoAcademico(anio, semestre);
-            
+
             fecha = flujo.readUTF();
 
             codigo = flujo.readUTF();
@@ -156,8 +156,8 @@ public class MatriculaDAL {
                 nota = flujo.readDouble();
                 estado1 = flujo.readBoolean();
                 a = new Asignatura(codigoAsi, nomA, creditos, ciclo, estadoasig);
-            asignatura = new AsignaturaCalificacion(a, lleva, nota, estado1);
-            asignas.add(asignatura);
+                asignatura = new AsignaturaCalificacion(a, lleva, nota, estado1);
+                asignas.add(asignatura);
             }
             matricula = new Matricula(peri, fecha, alumno, asignas);
 

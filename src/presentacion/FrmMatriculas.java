@@ -6,18 +6,15 @@
 package presentacion;
 
 import ModelosTabla.ModeloMatricula;
-import entidades.Asignatura;
 import entidades.AsignaturaCalificacion;
 import entidades.Matricula;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author HP
- */
 public class FrmMatriculas extends javax.swing.JFrame {
+
     ArrayList<Matricula> matriculas;
+
     /**
      * Creates new form FrmMatriculas
      */
@@ -26,11 +23,11 @@ public class FrmMatriculas extends javax.swing.JFrame {
         matriculas = FrmAlumno.matriculas;
         jTable1.setModel(new ModeloMatricula(matriculas));
     }
-    
-    public void elegirAsignatura(){
+
+    public void elegirAsignatura() {
         try {
-        int row = jTable1.getSelectedRow();
-            String apellido = String.valueOf(jTable1.getValueAt(row, 1));  
+            int row = jTable1.getSelectedRow();
+            String apellido = String.valueOf(jTable1.getValueAt(row, 1));
             if (!(row == -1)) {
                 //recorro un ciclo para saber la asignatura por codigo
                 for (int j = 0; j < matriculas.size(); j++) {
@@ -48,13 +45,13 @@ public class FrmMatriculas extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    
-    public void llenarCurso(ArrayList<AsignaturaCalificacion> asignaturas){
+
+    public void llenarCurso(ArrayList<AsignaturaCalificacion> asignaturas) {
         String mensaje = "  CURSOS MATRICULADOS\n\n";
         String mensaje2 = " CRÉDITOS\n\n";
         for (int i = 0; i < asignaturas.size(); i++) {
-            mensaje +="      "+ (i+1) +"-"+ asignaturas.get(i).getAsignatura().getNombre()+"\n";
-            mensaje2 +=" N° "+asignaturas.get(i).getAsignatura().getCreditos()+"\n";
+            mensaje += "      " + (i + 1) + "-" + asignaturas.get(i).getAsignatura().getNombre() + "\n";
+            mensaje2 += " N° " + asignaturas.get(i).getAsignatura().getCreditos() + "\n";
         }
         jTextArea1.setText(mensaje);
         jTextArea2.setText(mensaje2);
@@ -156,7 +153,6 @@ public class FrmMatriculas extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

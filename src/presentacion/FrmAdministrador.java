@@ -10,10 +10,6 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.util.ArrayList;
 
-/**
- *
- * @author HP
- */
 public class FrmAdministrador extends javax.swing.JFrame {
 
     /**
@@ -194,30 +190,30 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     private void jMenuBar2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar2MouseDragged
         Point point = MouseInfo.getPointerInfo().getLocation();
-        setLocation(point.x-xx,point.y-xy);
+        setLocation(point.x - xx, point.y - xy);
     }//GEN-LAST:event_jMenuBar2MouseDragged
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-       dispose();
-        FrmRegistrarAsignatura c  = new FrmRegistrarAsignatura();
+        dispose();
+        FrmRegistrarAsignatura c = new FrmRegistrarAsignatura();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-         dispose();
-        FrmAlumnos c  = new FrmAlumnos();
+        dispose();
+        FrmAlumnos c = new FrmAlumnos();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         dispose();
-        FrmRegistrarEstudiante c  = new FrmRegistrarEstudiante();
+        FrmRegistrarEstudiante c = new FrmRegistrarEstudiante();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         dispose();
-        FrmMatriculas c  = new FrmMatriculas();
+        FrmMatriculas c = new FrmMatriculas();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
@@ -234,7 +230,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-       dispose();
+        dispose();
         FrmPrincipal c = new FrmPrincipal();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -244,11 +240,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         FrmPrincipal c = new FrmPrincipal();
         c.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-    int  xx,xy;
+    int xx, xy;
     /**
      * @param args the command line arguments
      */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

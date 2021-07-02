@@ -15,30 +15,27 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import logica.MatriculaBL;
 
-/**
- *
- * @author HP
- */
 public class FrmCalificar extends javax.swing.JFrame {
+
     ModeloCalificacion tma;
     ArrayList<AsignaturaCalificacion> asignaturaCalis;
     String apellido;
     ArrayList<Matricula> matriculas = (ArrayList<Matricula>) MatriculaBL.llenarColeccion();
     int asignaturaSeleccionada;
-    
+
     /**
      * Creates new form FrmCalificar
      */
     public FrmCalificar() {
         initComponents();
-        jTable1.setModel( new ModeloVista(matriculas));
+        jTable1.setModel(new ModeloVista(matriculas));
     }
-    
-    public void elegirAsignatura(){
-        
+
+    public void elegirAsignatura() {
+
         try {
-        int row = jTable1.getSelectedRow();
-             apellido = String.valueOf(jTable1.getValueAt(row, 0));  
+            int row = jTable1.getSelectedRow();
+            apellido = String.valueOf(jTable1.getValueAt(row, 0));
             if (!(row == -1)) {
                 //recorro un ciclo para saber la asignatura por codigo
                 for (int j = 0; j < matriculas.size(); j++) {
@@ -46,9 +43,9 @@ public class FrmCalificar extends javax.swing.JFrame {
 
                         txtApellido.setText(matriculas.get(j).getAlumno().getApellidos());
                         JOptionPane.showMessageDialog(null, "Asignatura Seleccionada!", "Mensaje", 1);
-                        
+
                         asignaturaCalis = matriculas.get(j).getAsignaturas();
-                        
+
                         tma = new ModeloCalificacion(asignaturaCalis);
                         jTable2.setModel(tma);
                         //sumo los creditos
@@ -61,21 +58,21 @@ public class FrmCalificar extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    
-    public void elegir(){
+
+    public void elegir() {
         try {
-        int row = jTable2.getSelectedRow();
-            String codigo = String.valueOf(jTable2.getValueAt(row, 0));  
+            int row = jTable2.getSelectedRow();
+            String codigo = String.valueOf(jTable2.getValueAt(row, 0));
             if (!(row == -1)) {
                 //recorro un ciclo para saber la asignatura por codigo
                 for (int j = 0; j < asignaturaCalis.size(); j++) {
                     if (asignaturaCalis.get(j).getAsignatura().getCodigo().equals(codigo)) {
 
                         txtCurso.setText(asignaturaCalis.get(j).getAsignatura().getNombre());
-                        if(asignaturaCalis.get(j).getCalificacion()==21.0){
+                        if (asignaturaCalis.get(j).getCalificacion() == 21.0) {
                             txtCalificacion.setForeground(Color.red);
                             txtCalificacion.setText("Sin calificar");
-                        }else{
+                        } else {
                             txtCalificacion.setText(String.valueOf(asignaturaCalis.get(j).getCalificacion()));
                             txtCalificacion.setForeground(Color.BLACK);
                         }
@@ -268,18 +265,18 @@ public class FrmCalificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       elegirAsignatura();
-       txtCalificacion.setText(null);
-       txtCurso.setText(null);
-       txtNveces.setText(null);
+        elegirAsignatura();
+        txtCalificacion.setText(null);
+        txtCurso.setText(null);
+        txtNveces.setText(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       elegir();
+        elegir();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalificacionActionPerformed
-        
+
     }//GEN-LAST:event_txtCalificacionActionPerformed
 
     private void txtCalificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCalificacionMouseClicked
@@ -288,52 +285,54 @@ public class FrmCalificar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //        FrmAlumno.matriculas.get(1).getAsignaturas().
-      if(Integer.parseInt( txtCalificacion.getText())>=0 && Integer.parseInt( txtCalificacion.getText())<=20){
-          int veces;
-      int ver = -1;
-        for (int i = 0; i < matriculas.size(); i++) {
-            if(apellido.equals(txtApellido.getText()) && txtCurso.getText().equals(matriculas.get(i).getAsignaturas().get(asignaturaSeleccionada).getAsignatura().getNombre()) ){
-                ver = i;       
-            }
-           
-        }
-        
-        if(ver!=-1){
-            Matricula m =null;
-            m = matriculas.get(ver);
-            m.getAsignaturas().get(asignaturaSeleccionada).setCalificacion(Double.parseDouble(txtCalificacion.getText()));
-                    veces =m.getAsignaturas().get(asignaturaSeleccionada).getContador();
+        try {
+            if (Integer.parseInt(txtCalificacion.getText()) >= 0 && Integer.parseInt(txtCalificacion.getText()) <= 20) {
+                int veces;
+                int ver = -1;
+                for (int i = 0; i < matriculas.size(); i++) {
+                    if (apellido.equals(txtApellido.getText()) && txtCurso.getText().equals(matriculas.get(i).getAsignaturas().get(asignaturaSeleccionada).getAsignatura().getNombre())) {
+                        ver = i;
+                    }
+
+                }
+
+                if (ver != -1) {
+                    Matricula m = null;
+                    m = matriculas.get(ver);
+                    m.getAsignaturas().get(asignaturaSeleccionada).setCalificacion(Double.parseDouble(txtCalificacion.getText()));
+                    veces = m.getAsignaturas().get(asignaturaSeleccionada).getContador();
                     m.getAsignaturas().get(asignaturaSeleccionada).setContador(veces);
-                           MatriculaDAL.setMatricula(ver, m);
-                    if(veces==4){
-                        
-                    }else{
-                        if(Double.parseDouble(txtCalificacion.getText()) <= 10.4){
-                         veces++;
-                          
-                           m.getAsignaturas().get(asignaturaSeleccionada).setContador(veces);
-                           MatriculaDAL.setMatricula(ver, m);
-                    }
-                    }
-                    
-                    
-                    if(veces<4){
+                    MatriculaDAL.setMatricula(ver, m);
+                    if (veces == 4) {
 
-                        JOptionPane.showMessageDialog(null,"Calificacion Realizada");
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Este Alumno se retirará de la Universidad Nacional De Trujillo","Menjaje",2);
+                    } else {
+                        if (Double.parseDouble(txtCalificacion.getText()) <= 10.4) {
+                            veces++;
+
+                            m.getAsignaturas().get(asignaturaSeleccionada).setContador(veces);
+                            MatriculaDAL.setMatricula(ver, m);
+                        }
                     }
+
+                    if (veces < 4) {
+
+                        JOptionPane.showMessageDialog(null, "Calificacion Realizada");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Este Alumno se retirará de la Universidad Nacional De Trujillo", "Menjaje", 2);
+                    }
+                }
+                txtCalificacion.setText("");
+                txtCurso.setText("");
+                txtNveces.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese una nota válida", "Advertencia", 2);
+                txtCalificacion.setText("");
+                txtCurso.setText("");
+                txtNveces.setText("");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ingrese una nota válida", "Advertencia", 2);
         }
-         txtCalificacion.setText("");
-          txtCurso.setText("");
-          txtNveces.setText("");
-      }else{
-          JOptionPane.showMessageDialog(null,"Ingrese una nota válida","Advertencia",2);
-            txtCalificacion.setText("");
-          txtCurso.setText("");
-          txtNveces.setText("");
-      }
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -346,7 +345,6 @@ public class FrmCalificar extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -5,7 +5,6 @@
  */
 package presentacion;
 
-
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.util.Timer;
@@ -17,12 +16,8 @@ import entidades.*;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-
-/**
- *
- * @author HP
- */
 public class FrmEstudiante extends javax.swing.JFrame {
+
     static int contador;
     private Hora hora;
     public static boolean estado;
@@ -30,12 +25,13 @@ public class FrmEstudiante extends javax.swing.JFrame {
     public static String apellidos;
     public static String carrera;
     public static String direccion;
+
     /**
      * Creates new form FrmEstudiante
      */
     public FrmEstudiante() {
         initComponents();
-        movimiento();       
+        movimiento();
         jButton2.setBackground(Color.BLACK);
         jButton1.setBackground(Color.BLACK);
         labelNombre.setText(nombre);
@@ -44,47 +40,45 @@ public class FrmEstudiante extends javax.swing.JFrame {
         labelNombre.setText(nombre);
 
     }
-    
+
     public FrmEstudiante(Estudiante estudiante) {
         initComponents();
         movimiento();
         this.estudiante = estudiante;
-       rellenarCampos();
+        rellenarCampos();
 
     }
 
-    
-    public void rellenarCampos(){
+    public void rellenarCampos() {
         hora = new Hora(jLabelHora);
         hora.start();
-        
+
         jButton2.setBackground(Color.BLACK);
         jButton1.setBackground(Color.BLACK);
-        
-        
+
         labelNombre.setText(estudiante.getNombre());
         labelApellidos.setText(estudiante.getNombre());
         labelNombre.setText(estudiante.getApellidos());
         labelDirrecion.setText(estudiante.getDireccion());
     }
-    
-    public void movimiento(){
+
+    public void movimiento() {
         int velocidad = 1;
         Timer timer;
         TimerTask tarea;
-        int venil = velocidad*800;
-        
+        int venil = velocidad * 800;
+
         tarea = new TimerTask() {
             @Override
             public void run() {
                 Icon icono;
-                switch(contador){
-                    case 0: 
+                switch (contador) {
+                    case 0:
                         contador = 1;
                         icono = new ImageIcon(getClass().getResource("/imagenes/blanco_rojo.png"));
                         jLabel3.setIcon(icono);
                         break;
-                    case 1: 
+                    case 1:
                         contador = 2;
                         icono = new ImageIcon(getClass().getResource("/imagenes/blanco_amarillo.png"));
                         jLabel3.setIcon(icono);
@@ -93,21 +87,21 @@ public class FrmEstudiante extends javax.swing.JFrame {
                         contador = 0;
                         icono = new ImageIcon(getClass().getResource("/imagenes/blanco_verde.png"));
                         jLabel3.setIcon(icono);
-                        break;  
+                        break;
                 }
-                
+
             }
         };
         timer = new Timer();
         timer.scheduleAtFixedRate(tarea, venil, venil);
     }
-    
-      public void estado(){
-        if(estado){
+
+    public void estado() {
+        if (estado) {
             FrmCalificacion califi = new FrmCalificacion();
             califi.setVisible(true);
-        }else{
-            JOptionPane.showInternalMessageDialog(null,"Aún no se matriculo en ningun curso");
+        } else {
+            JOptionPane.showInternalMessageDialog(null, "Aún no se matriculo en ningun curso");
 
         }
     }
@@ -246,14 +240,14 @@ public class FrmEstudiante extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(919, 615));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    int xx,xy;
+    int xx, xy;
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
-         Point point = MouseInfo.getPointerInfo().getLocation();
+        Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - xx, point.y - xy);
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
-       xx = evt.getX();
+        xx = evt.getX();
         xy = evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
 
@@ -264,7 +258,7 @@ public class FrmEstudiante extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
         FrmAlumno estudiante = new FrmAlumno();
-            estudiante.setVisible(true);
+        estudiante.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
@@ -276,7 +270,6 @@ public class FrmEstudiante extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

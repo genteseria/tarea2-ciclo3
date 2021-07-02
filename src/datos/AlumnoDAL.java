@@ -52,7 +52,7 @@ public class AlumnoDAL {
         String mensaje = "";
         try {
             if (i >= 0 && i <= numRegistros) {
-                if (alumno.getTamaño()> TAMREG) {
+                if (alumno.getTamaño() > TAMREG) {
                     mensaje = "Tamaño de registro excedido";
                 } else {
                     creaFileEstudiante();
@@ -84,13 +84,13 @@ public class AlumnoDAL {
     }
 
     public static Estudiante getEstudiante(int i) {
-        String nombre, apellido,direccion,dni,usuario,contra,codigo;
+        String nombre, apellido, direccion, dni, usuario, contra, codigo;
         boolean estado;
         Estudiante alumno = null;
         try {
             creaFileEstudiante();
             flujo.seek(i * TAMREG);
-           codigo = flujo.readUTF();
+            codigo = flujo.readUTF();
             apellido = flujo.readUTF();
             nombre = flujo.readUTF();
             direccion = flujo.readUTF();

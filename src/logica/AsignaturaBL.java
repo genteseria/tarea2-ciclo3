@@ -17,7 +17,7 @@ public class AsignaturaBL {
 
     private static Asignatura asignatura;
 
-    public static String escribirAsignatura(String codigo, String nombre, int creditos, int ciclo,boolean estado){
+    public static String escribirAsignatura(String codigo, String nombre, int creditos, int ciclo, boolean estado) {
         String respuesta = "";
         if (nombre.trim().length() > 0 && codigo.trim().length() > 0) {
             asignatura = new Asignatura(codigo, nombre, creditos, ciclo, estado);
@@ -47,5 +47,5 @@ public class AsignaturaBL {
     public static List<Asignatura> llenarColeccion() {
         return AsignaturaDAL.llenarColeccion();
     }
-    
+
 }

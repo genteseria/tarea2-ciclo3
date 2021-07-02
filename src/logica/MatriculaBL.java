@@ -19,7 +19,7 @@ public class MatriculaBL {
 
     public static String escribirMatricula(PeriodoAcademico perido, String fecha, Estudiante alumno, ArrayList<AsignaturaCalificacion> asignaturas) {
         String respuesta = "";
-        if (fecha.trim().length() > 0 ) {
+        if (fecha.trim().length() > 0) {
             matricula = new Matricula(perido, fecha, alumno, asignaturas);
             respuesta = MatriculaDAL.escribirMatricula(matricula);
         } else {
@@ -39,12 +39,12 @@ public class MatriculaBL {
     public static Matricula getMatricula(int i) {
         Matricula matricula = null;
         if (i >= 0 && i < AlumnoDAL.getNumRegistros()) {
-            matricula =MatriculaDAL.getMatricula(i);
+            matricula = MatriculaDAL.getMatricula(i);
         }
         return matricula;
     }
 
     public static List<Matricula> llenarColeccion() {
-            return MatriculaDAL.llenarColeccion();
+        return MatriculaDAL.llenarColeccion();
     }
 }
