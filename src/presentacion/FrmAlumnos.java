@@ -9,6 +9,10 @@ import ModelosTabla.ModeloEstudiantes;
 import entidades.Estudiante;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmAlumnos extends javax.swing.JFrame {
 
     /**
@@ -116,6 +120,7 @@ public class FrmAlumnos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;

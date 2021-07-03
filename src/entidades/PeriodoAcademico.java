@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entidades;
 
 /**
@@ -10,11 +11,11 @@ package entidades;
  * @author Jsmith
  */
 public class PeriodoAcademico {
-
     private int año;
     private String semestre;
-
+    
     //20
+
     public int getAño() {
         return año;
     }
@@ -36,20 +37,23 @@ public class PeriodoAcademico {
         semestre = "NS";
     }
 
+
     public PeriodoAcademico(int año, String semestre) {
         this.año = año;
         this.semestre = semestre;
-
+        
     }
 
     @Override
     public String toString() {
-        return " " + getAño() + " - " + getSemestre();
+        return " "+getAño()+" - "+getSemestre();
     }
-
-    public int getTamaño() {
+    
+    
+    
+    public int getTamaño(){
         return (4
-                + getSemestre().length() * 2 + 2);
+                +getSemestre().length()*2+2);
     }
-
+    
 }

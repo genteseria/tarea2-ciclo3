@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entidades;
 
 /**
@@ -10,7 +11,6 @@ package entidades;
  * @author Jsmith
  */
 public class AsignaturaCalificacion {
-
     private Asignatura asignatura;
     private int contador;
     private double calificacion;
@@ -21,9 +21,10 @@ public class AsignaturaCalificacion {
         this.contador = contador;
         this.calificacion = calificacion;
         this.estado = estado;
-
+        
     }
 
+    
     public Asignatura getAsignatura() {
         return asignatura;
     }
@@ -55,11 +56,11 @@ public class AsignaturaCalificacion {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
-    public int getTamaño() {
-        return (getAsignatura().getTamaño()
+    
+    public int getTamaño(){
+         return (getAsignatura().getTamaño()
                 + 8
-                + 1);
+                +1);
     }
-
+    
 }

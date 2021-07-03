@@ -17,9 +17,9 @@ public class PeriodoAcademicoBL {
 
     private static PeriodoAcademico periodo;
 
-    public static String escribirPeriodoAcademico(String semestre, int ciclo) {
+    public static String escribirPeriodoAcademico(String semestre,int ciclo){
         String respuesta = "";
-        if (semestre.trim().length() > 0) {
+        if (semestre.trim().length() > 0 ) {
             periodo = new PeriodoAcademico(ciclo, semestre);
             respuesta = PeriodoAcademicoDAL.escribirPeriodoAcademico(periodo);
         } else {
@@ -47,5 +47,5 @@ public class PeriodoAcademicoBL {
     public static List<PeriodoAcademico> llenarColeccion() {
         return PeriodoAcademicoDAL.llenarColeccion();
     }
-
+    
 }

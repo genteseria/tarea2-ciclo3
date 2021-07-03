@@ -52,7 +52,7 @@ public class AsignaturaDAL {
         String mensaje = "";
         try {
             if (i >= 0 && i <= numRegistros) {
-                if (asignatura.getTamaño() > TAMREG) {
+                if (asignatura.getTamaño()> TAMREG) {
                     mensaje = "Tamaño de registro excedido";
                 } else {
                     creaFileAsignatura();
@@ -81,9 +81,9 @@ public class AsignaturaDAL {
     }
 
     public static Asignatura getAsignatura(int i) {
-        String nombre, codigo;
+        String nombre,codigo;
         boolean estado;
-        int creditos, ciclo;
+        int creditos,ciclo;
         Asignatura asignatura = null;
         try {
             creaFileAsignatura();

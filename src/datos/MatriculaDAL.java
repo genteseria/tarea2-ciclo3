@@ -16,7 +16,7 @@ import java.util.*;
 public class MatriculaDAL {
 
     private static RandomAccessFile flujo;
-    private static final int TAMREG = 600;
+    private static final int TAMREG = 610;
     private static int numRegistros;
 
     public static String creaFileMatricula() {
@@ -59,6 +59,7 @@ public class MatriculaDAL {
 
                     flujo.seek(i * TAMREG);
                     //SEMESTRE
+                    flujo.writeUTF(matricula.getId());
                     flujo.writeInt(matricula.getPerido().getAño());
                     flujo.writeUTF(matricula.getPerido().getSemestre());
                     //FECHA
@@ -114,7 +115,7 @@ public class MatriculaDAL {
         String nombre, apellido, direccion, dni, usuario, contra, codigo;
         boolean estado;
 
-        String nomA, codigoAsi;
+        String nomA, codigoAsi,ID;
         boolean estadoasig, estado1;
         int creditos, ciclo, lleva;
         double nota;
@@ -122,17 +123,17 @@ public class MatriculaDAL {
         ArrayList<AsignaturaCalificacion> asignas = new ArrayList<>();
         Matricula matricula = null;
         Estudiante alumno = null;
-        PeriodoAcademico peri = null;
-        AsignaturaCalificacion asignatura = null;
+        PeriodoAcademico peri= null;
+         AsignaturaCalificacion asignatura = null;
         Asignatura a = null;
         try {
             creaFileMatricula();
             flujo.seek(i * TAMREG);
-
+            ID = flujo.readUTF();
             anio = flujo.readInt();
             semestre = flujo.readUTF();
             peri = new PeriodoAcademico(anio, semestre);
-
+            
             fecha = flujo.readUTF();
 
             codigo = flujo.readUTF();
@@ -156,10 +157,10 @@ public class MatriculaDAL {
                 nota = flujo.readDouble();
                 estado1 = flujo.readBoolean();
                 a = new Asignatura(codigoAsi, nomA, creditos, ciclo, estadoasig);
-                asignatura = new AsignaturaCalificacion(a, lleva, nota, estado1);
-                asignas.add(asignatura);
+            asignatura = new AsignaturaCalificacion(a, lleva, nota, estado1);
+            asignas.add(asignatura);
             }
-            matricula = new Matricula(peri, fecha, alumno, asignas);
+            matricula = new Matricula(ID,peri, fecha, alumno, asignas);
 
         } catch (IOException ex) {
             System.out.println("\nProblema de E/S: " + ex.getMessage());

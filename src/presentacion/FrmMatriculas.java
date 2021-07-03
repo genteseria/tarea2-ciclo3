@@ -6,15 +6,18 @@
 package presentacion;
 
 import ModelosTabla.ModeloMatricula;
+import entidades.Asignatura;
 import entidades.AsignaturaCalificacion;
 import entidades.Matricula;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmMatriculas extends javax.swing.JFrame {
-
     ArrayList<Matricula> matriculas;
-
     /**
      * Creates new form FrmMatriculas
      */
@@ -23,15 +26,17 @@ public class FrmMatriculas extends javax.swing.JFrame {
         matriculas = FrmAlumno.matriculas;
         jTable1.setModel(new ModeloMatricula(matriculas));
     }
-
-    public void elegirAsignatura() {
+    
+    public void elegirAsignatura(){
         try {
-            int row = jTable1.getSelectedRow();
-            String apellido = String.valueOf(jTable1.getValueAt(row, 1));
+        int row = jTable1.getSelectedRow();
+            String periodo = String.valueOf(jTable1.getValueAt(row, 0)); 
+            String apellido = String.valueOf(jTable1.getValueAt(row, 1));  
             if (!(row == -1)) {
                 //recorro un ciclo para saber la asignatura por codigo
                 for (int j = 0; j < matriculas.size(); j++) {
-                    if (matriculas.get(j).getAlumno().getApellidos().equals(apellido)) {
+                    if (matriculas.get(j).getAlumno().getApellidos().equals(apellido) && 
+                            matriculas.get(j).getPerido().toString().equals(periodo)) {
                         //Añado la asignatura matriculada
                         llenarCurso(matriculas.get(j).getAsignaturas());
                         JOptionPane.showMessageDialog(null, "Asignatura Seleccionada!", "Mensaje", 1);
@@ -45,13 +50,13 @@ public class FrmMatriculas extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-
-    public void llenarCurso(ArrayList<AsignaturaCalificacion> asignaturas) {
+    
+    public void llenarCurso(ArrayList<AsignaturaCalificacion> asignaturas){
         String mensaje = "  CURSOS MATRICULADOS\n\n";
         String mensaje2 = " CRÉDITOS\n\n";
         for (int i = 0; i < asignaturas.size(); i++) {
-            mensaje += "      " + (i + 1) + "-" + asignaturas.get(i).getAsignatura().getNombre() + "\n";
-            mensaje2 += " N° " + asignaturas.get(i).getAsignatura().getCreditos() + "\n";
+            mensaje +="      "+ (i+1) +"-"+ asignaturas.get(i).getAsignatura().getNombre()+"\n";
+            mensaje2 +=" N° "+asignaturas.get(i).getAsignatura().getCreditos()+"\n";
         }
         jTextArea1.setText(mensaje);
         jTextArea2.setText(mensaje2);
@@ -95,6 +100,11 @@ public class FrmMatriculas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 680, 176));
@@ -150,9 +160,14 @@ public class FrmMatriculas extends javax.swing.JFrame {
         elegirAsignatura();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

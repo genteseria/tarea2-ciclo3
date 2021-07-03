@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ModelosTabla;
 
 import entidades.Estudiante;
@@ -13,15 +14,15 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Jsmith
  */
-public class ModeloEstudiantes extends AbstractTableModel {
+public class ModeloEstudiantes extends AbstractTableModel{
 
     private ArrayList<Estudiante> alumnos;
-    private final String[] columnas = {"Codigo", "Apellidos", "Nombres", "Direccion", "N° DNI", "Usuario", "Contra"};
+    private final String[] columnas = {"Codigo","Apellidos","Nombres","Direccion","N° DNI","Usuario","Contra"};
 
     public ModeloEstudiantes(ArrayList<Estudiante> alumnos) {
         this.alumnos = alumnos;
     }
-
+ 
     @Override
     public int getRowCount() {
         return alumnos.size();
@@ -34,7 +35,7 @@ public class ModeloEstudiantes extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch (columnIndex) {
+        switch(columnIndex){
             case 0:
                 return alumnos.get(rowIndex).getCodigo();
             case 1:
@@ -57,5 +58,5 @@ public class ModeloEstudiantes extends AbstractTableModel {
     public String getColumnName(int column) {
         return columnas[column];
     }
-
+    
 }

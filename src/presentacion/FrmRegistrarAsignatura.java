@@ -4,18 +4,21 @@
  * and open the template in the editor.
  */
 package presentacion;
-
 import entidades.*;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import logica.AlumnoBL;
 import logica.AsignaturaBL;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmRegistrarAsignatura extends javax.swing.JFrame {
-
-    public static ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
-
+    public static ArrayList<Asignatura> asignaturas =new ArrayList<Asignatura>();
+    
     /**
      * Creates new form FrmAsignatura
      */
@@ -190,17 +193,17 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
         String codigo = txtCodigo.getText();
         String nombre = txtNombre.getText();
         //Asignatura asignatura = new Asignatura(txtCodigo.getText(), txtNombre.getText(),creditos, ciclo,true);
-
-        mensaje = AsignaturaBL.escribirAsignatura(codigo, nombre, creditos, ciclo, true);
+        
+        mensaje = AsignaturaBL.escribirAsignatura(codigo, nombre, creditos, ciclo,true);
         JOptionPane.showMessageDialog(null, mensaje);
         asignaturas = (ArrayList<Asignatura>) AsignaturaBL.llenarColeccion();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        txtCodigo.setText(null);
-        txtNombre.setText(null);
-        txtCreditos.setSelectedIndex(0);
-        txtCiclos.setSelectedIndex(0);
+       txtCodigo.setText(null);
+       txtNombre.setText(null);
+       txtCreditos.setSelectedIndex(0);
+       txtCiclos.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -212,20 +215,21 @@ public class FrmRegistrarAsignatura extends javax.swing.JFrame {
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseClicked
-    int x, y;
+int x,y;
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
-        x = evt.getX();
-        y = evt.getY();
+       x =evt.getX();
+       y = evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
         Point poin = MouseInfo.getPointerInfo().getLocation();
-        setLocation(poin.x - x, poin.y - y);
+        setLocation(poin.x-x,poin.y-y);
     }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
      */
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

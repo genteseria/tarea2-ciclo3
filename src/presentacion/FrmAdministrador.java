@@ -10,6 +10,10 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmAdministrador extends javax.swing.JFrame {
 
     /**
@@ -39,6 +43,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
@@ -122,6 +128,16 @@ public class FrmAdministrador extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem5);
+        jMenu3.add(jSeparator7);
+
+        jMenuItem9.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jMenuItem9.setText("Actualizar Periodo");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem9);
 
         jMenuBar2.add(jMenu3);
 
@@ -190,30 +206,30 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     private void jMenuBar2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar2MouseDragged
         Point point = MouseInfo.getPointerInfo().getLocation();
-        setLocation(point.x - xx, point.y - xy);
+        setLocation(point.x-xx,point.y-xy);
     }//GEN-LAST:event_jMenuBar2MouseDragged
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        dispose();
-        FrmRegistrarAsignatura c = new FrmRegistrarAsignatura();
+       dispose();
+        FrmRegistrarAsignatura c  = new FrmRegistrarAsignatura();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        dispose();
-        FrmAlumnos c = new FrmAlumnos();
+         dispose();
+        FrmAlumnos c  = new FrmAlumnos();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         dispose();
-        FrmRegistrarEstudiante c = new FrmRegistrarEstudiante();
+        FrmRegistrarEstudiante c  = new FrmRegistrarEstudiante();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         dispose();
-        FrmMatriculas c = new FrmMatriculas();
+        FrmMatriculas c  = new FrmMatriculas();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
@@ -230,7 +246,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        dispose();
+       dispose();
         FrmPrincipal c = new FrmPrincipal();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -240,11 +256,17 @@ public class FrmAdministrador extends javax.swing.JFrame {
         FrmPrincipal c = new FrmPrincipal();
         c.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-    int xx, xy;
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        dispose();
+        FrmActualizarPeriodo c = new FrmActualizarPeriodo();
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    int  xx,xy;
     /**
      * @param args the command line arguments
      */
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -262,12 +284,14 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
     // End of variables declaration//GEN-END:variables
     ArrayList<Estudiante> estudiantes = new ArrayList<>();
     ArrayList<Matricula> matriculas = new ArrayList<>();

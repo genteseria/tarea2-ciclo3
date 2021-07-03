@@ -18,120 +18,141 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import logica.MatriculaBL;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmAlumno extends javax.swing.JFrame {
-
     ModeloAsignatura tma;
-    public static Estudiante alumno = null;
-
+    public static Estudiante alumno=null;
+    public static String periodo;
     /**
      * Creates new form FrmAlumno
      */
     public FrmAlumno() {
         initComponents();
+        ActualizarPeriodo();
     }
-
-    public void cambiar() {
-
-        ArrayList<Asignatura> muestreo = new ArrayList<>();
-        ArrayList<Asignatura> asignatu = FrmRegistrarAsignatura.asignaturas;
-
+    
+    public void ActualizarPeriodo(){
+        jcBPeriodo.addItem("<Seleccionar Periodo>");
+        if(periodo==null){
+            periodo = "2021-I";
+        }
+        jcBPeriodo.addItem(periodo);
+    }
+    
+        public void cambiar(){
+            
+            ArrayList<Asignatura> muestreo = new ArrayList<>();
+            ArrayList<Asignatura> asignatu = FrmRegistrarAsignatura.asignaturas;
+           
+            
+            
         try {
             String sele = String.valueOf(jcBPeriodo.getSelectedItem());
-            if (sele.equals("Nivelacion")) {
-
-                JOptionPane.showMessageDialog(null, "Nivelacion");
-            } else if (sele.equals("2021-I")) {
-
-                for (int i = 0; i < asignatu.size(); i++) {
-
-                    if (asignatu.get(i).getCiclo() == 1) {
-                        if (asignatu.get(i).isEstado()) {
-                            muestreo.add(asignatu.get(i));
-                        }
+        if(sele.equals("Nivelacion")){
+            
+            JOptionPane.showMessageDialog(null,"Nivelacion");
+        }else if(sele.equals("2021-I")){
+            
+            for (int i = 0; i < asignatu.size(); i++) {
+                
+                if(asignatu.get(i).getCiclo()==1){
+                    if(asignatu.get(i).isEstado()){
+                        muestreo.add(asignatu.get(i));
                     }
-
-                }
-
-                tma = new ModeloAsignatura(muestreo);
-                tablaCursosDisponibles.setModel(tma);
-
-            } else if (sele.equals("2021-II")) {
-
-                for (int i = 0; i < asignatu.size(); i++) {
-                    if (asignatu.get(i).getCiclo() == 2) {
-                        if (asignatu.get(i).isEstado()) {
-                            muestreo.add(asignatu.get(i));
-                        }
-
-                    }
-                }
-
-                tma = new ModeloAsignatura(muestreo);
-                tablaCursosDisponibles.setModel(tma);
+                } 
+                
             }
+            
+            
+            
+            tma = new ModeloAsignatura(muestreo);
+            tablaCursosDisponibles.setModel(tma);
+            
+        }else if(sele.equals("2021-II")){
+            
+            
+            for (int i = 0; i < asignatu.size(); i++) {
+                if(asignatu.get(i).getCiclo()==2){
+                    if(asignatu.get(i).isEstado()){
+                     muestreo.add(asignatu.get(i));
+                    }
+                    
+                } 
+            }
+            
+
+            
+            tma = new ModeloAsignatura(muestreo);
+            tablaCursosDisponibles.setModel(tma);
+        }
         } catch (Exception e) {
         }
-
+        
     }
-
-    public void elegirAsignatura() {
+        
+        public void elegirAsignatura(){
         try {
-            int nVeces = 1;
-            double nota = 21;
-            boolean estado = true;
-            int creditos = 0;
-            int creditosAnterior = Integer.parseInt(txtTotalCreditos.getText());
-            int row = tablaCursosDisponibles.getSelectedRow();
-            if (jcBPeriodo.getSelectedItem().toString().equals("Seleccionar Periodo")) {
-                JOptionPane.showMessageDialog(null, "Seleccione un Periodo", "Advertencia", 2);
-            } else {
-                String codigoAsignatura = String.valueOf(tablaCursosDisponibles.getValueAt(row, 0));
-                if (verificadorMatricula(codigoAsignatura)) {
-                    if (!(row == -1)) {
-                        //recorro un ciclo para saber la asignatura por codigo
-                        for (int j = 0; j < asignaturas.size(); j++) {
-                            if (asignaturas.get(j).getCodigo().equals(codigoAsignatura)) {
-                                //Añado la asignatura matriculada
-                                AsignaturaCalificacion cali = new AsignaturaCalificacion(asignaturas.get(j), nVeces, nota, true);
-                                asignaturasSeleccionadas.add(cali);
-                                asignaturasVisualizar.add(asignaturas.get(j));
-                                JOptionPane.showMessageDialog(null, "Asignatura Matriculada!", "Mensaje", 1);
-                                //sumo los creditos
-                                creditos = creditosAnterior + asignaturas.get(j).getCreditos();
-                                txtTotalCreditos.setText(String.valueOf(creditos));
-                            }
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla", "Mensaje", 2);
+             int nVeces=1;
+        double nota = 21;
+        boolean estado = true;
+            int creditos=0;
+        int creditosAnterior= Integer.parseInt(txtTotalCreditos.getText());
+        int row = tablaCursosDisponibles.getSelectedRow();
+        if(jcBPeriodo.getSelectedItem().toString().equals("Seleccionar Periodo")){
+          JOptionPane.showMessageDialog(null,"Seleccione un Periodo","Advertencia",2);
+        }else{
+            String codigoAsignatura = String.valueOf(tablaCursosDisponibles.getValueAt(row, 0));  
+          if (verificadorMatricula(codigoAsignatura)) {
+            if (!(row == -1)) {
+                //recorro un ciclo para saber la asignatura por codigo
+                for (int j = 0; j < asignaturas.size(); j++) {
+                    if (asignaturas.get(j).getCodigo().equals(codigoAsignatura)) {
+                        //Añado la asignatura matriculada
+                        AsignaturaCalificacion cali =new AsignaturaCalificacion(asignaturas.get(j), nVeces, nota, true);
+                        asignaturasSeleccionadas.add(cali);
+                        asignaturasVisualizar.add(asignaturas.get(j));
+                        JOptionPane.showMessageDialog(null, "Asignatura Matriculada!", "Mensaje", 1);
+                        //sumo los creditos
+                        creditos = creditosAnterior + asignaturas.get(j).getCreditos();
+                        txtTotalCreditos.setText(String.valueOf(creditos));
                     }
                 }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla", "Mensaje", 2);
             }
+        }
+        }
         } catch (Exception e) {
         }
-
+        
     }
-
-    public boolean verificadorMatricula(String codigo) {
-        boolean verificador = true;
+        
+         
+    public boolean verificadorMatricula(String codigo){
+                boolean verificador = true;
         try {
             for (int i = 0; i < asignaturasSeleccionadas.size(); i++) {
-                if (asignaturasSeleccionadas.get(i).getAsignatura().getCodigo().equals(codigo)) {
-                    JOptionPane.showMessageDialog(null, "Ya esta matriculado en esta asignatura", "Mensaje", 2);
-                    verificador = false;
-                }
-
+            if(asignaturasSeleccionadas.get(i).getAsignatura().getCodigo().equals(codigo)){
+                JOptionPane.showMessageDialog(null,"Ya esta matriculado en esta asignatura","Mensaje",2);
+                verificador = false;
             }
+            
+        }
         } catch (Exception e) {
         }
 
+        
         return verificador;
     }
-
-    public void llenarTablaMatricula() {
+    
+    public void llenarTablaMatricula(){
         try {
             ModeloAsignatura tmaAsignatura = new ModeloAsignatura(asignaturasVisualizar);
-            tablaMatriculados.setModel(tmaAsignatura);
+        tablaMatriculados.setModel(tmaAsignatura);
         } catch (Exception e) {
         }
 
@@ -239,7 +260,6 @@ public class FrmAlumno extends javax.swing.JFrame {
 
         jcBPeriodo.setBackground(new java.awt.Color(0, 102, 255));
         jcBPeriodo.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jcBPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Periodo", "2021-I", "2021-II", "Nivelacion" }));
         jcBPeriodo.setBorder(new javax.swing.border.MatteBorder(null));
         jcBPeriodo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -278,7 +298,7 @@ public class FrmAlumno extends javax.swing.JFrame {
                 jcBPeriodoActionPerformed(evt);
             }
         });
-        jPanel1.add(jcBPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 180, 30));
+        jPanel1.add(jcBPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 190, 30));
 
         jButton2.setBackground(new java.awt.Color(51, 51, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -318,7 +338,7 @@ public class FrmAlumno extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -377,34 +397,36 @@ public class FrmAlumno extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String sele = String.valueOf(jcBPeriodo.getSelectedItem());
-
-        if (asignaturasSeleccionadas.size() < 5) {
-            JOptionPane.showMessageDialog(null, "Matricularse en 5 asignaturas", "Advertencia", 2);
-        } else if (asignaturasSeleccionadas.size() == 5) {
-            String semestre = "";
-            int Año = 0;
+       
+        if(asignaturasSeleccionadas.size()<5){
+            JOptionPane.showMessageDialog(null,"Matricularse en 5 asignaturas","Advertencia",2);
+        }else if(asignaturasSeleccionadas.size()==5){
+            
+            String semestre ="";
+            int Año =0;
             if (sele.equals("Nivelacion")) {
-                semestre = "Nivelacion";
+                semestre ="Nivelacion";
                 Año = 2021;
-            } else if (sele.equals("2021-I")) {
-                semestre = "I";
+            }else if(sele.equals("2021-I")){
+                semestre ="I";
                 Año = 2021;
-            } else if (sele.equals("2021-II")) {
-                semestre = "II";
+            }else if(sele.equals("2021-II")){
+                semestre ="II";
                 Año = 2021;
             }
+            String id = Año+semestre;
             PeriodoAcademico pe = new PeriodoAcademico(Año, semestre);
             String fecha;
             Date date = new Date();
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+           DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             fecha = dateFormat.format(date);
 //            Matricula matricula = new Matricula(pe, fecha, alumno,asignaturasSeleccionadas);
             String mensaje = "";
-            mensaje = MatriculaBL.escribirMatricula(pe, fecha, alumno, asignaturasSeleccionadas);
+            mensaje=MatriculaBL.escribirMatricula(id,pe, fecha, alumno, asignaturasSeleccionadas);
             JOptionPane.showMessageDialog(null, mensaje);
             matriculas = (ArrayList<Matricula>) MatriculaBL.llenarColeccion();
 ////            matriculas.add(matricula);
-            JOptionPane.showMessageDialog(null, "Matricula Realizada con exito", "Mensaje", 1);
+            JOptionPane.showMessageDialog(null,"Matricula Realizada con exito","Mensaje",1);
             dispose();
             FrmLoginEstudiante c = new FrmLoginEstudiante();
             c.setVisible(true);
@@ -429,6 +451,7 @@ public class FrmAlumno extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -445,8 +468,8 @@ public class FrmAlumno extends javax.swing.JFrame {
     private javax.swing.JTable tablaMatriculados;
     private javax.swing.JTextField txtTotalCreditos;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<AsignaturaCalificacion> asignaturasSeleccionadas = new ArrayList<>();
+    private ArrayList<AsignaturaCalificacion> asignaturasSeleccionadas= new ArrayList<>();
     private ArrayList<Asignatura> asignaturas = FrmRegistrarAsignatura.asignaturas;
     public static ArrayList<Matricula> matriculas = new ArrayList();
-    private ArrayList<Asignatura> asignaturasVisualizar = new ArrayList<>();
+    private ArrayList<Asignatura> asignaturasVisualizar= new ArrayList<>();
 }

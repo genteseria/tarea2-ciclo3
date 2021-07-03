@@ -52,7 +52,7 @@ public class PeriodoAcademicoDAL {
         String mensaje = "";
         try {
             if (i >= 0 && i <= numRegistros) {
-                if (periodo.getTamaño() > TAMREG) {
+                if (periodo.getTamaño()> TAMREG) {
                     mensaje = "Tamaño de registro excedido";
                 } else {
                     creaFilePeriodoAcademico();

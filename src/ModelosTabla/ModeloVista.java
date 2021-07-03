@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ModelosTabla;
 
 import entidades.Matricula;
@@ -13,15 +14,14 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Jsmith
  */
-public class ModeloVista extends AbstractTableModel {
-
+public class ModeloVista extends AbstractTableModel{
     private ArrayList<Matricula> matriculas;
-    private final String[] columnas = {"Apellidos", "Nombres"};
+    private final String[] columnas = {"Periodo","Apellidos","Nombres"};
 
     public ModeloVista(ArrayList<Matricula> matriculas) {
         this.matriculas = matriculas;
     }
-
+ 
     @Override
     public int getRowCount() {
         return matriculas.size();
@@ -34,10 +34,12 @@ public class ModeloVista extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch (columnIndex) {
+        switch(columnIndex){
             case 0:
-                return matriculas.get(rowIndex).getAlumno().getApellidos();
+                return matriculas.get(rowIndex).getPerido().toString();
             case 1:
+                return matriculas.get(rowIndex).getAlumno().getApellidos();
+            case 2 :
                 return matriculas.get(rowIndex).getAlumno().getNombre();
         }
         return null;

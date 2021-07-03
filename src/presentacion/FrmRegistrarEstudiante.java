@@ -12,6 +12,10 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import logica.AlumnoBL;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmRegistrarEstudiante extends javax.swing.JFrame {
 
     /**
@@ -27,13 +31,14 @@ public class FrmRegistrarEstudiante extends javax.swing.JFrame {
 //            
 //        }
     }
-
-    public FrmRegistrarEstudiante(ArrayList<Estudiante> alumnos, ArrayList<Matricula> matriculas) {
+    
+     public FrmRegistrarEstudiante(ArrayList<Estudiante> alumnos,ArrayList<Matricula> matriculas) {
 //        initComponents();
 //        this.estudiantes = alumnos;
 //        this.matriculas=matriculas;
 
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -256,17 +261,17 @@ public class FrmRegistrarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String mensaje = "";
-        Estudiante alumno = new Estudiante(txtCodigo.getText(), txtApellidos.getText(), txtNombre.getText(),
-                txtDirecion.getText(), txtDni.getText(), true, txtUsuario.getText(), txtContraseña.getText());
-        mensaje = AlumnoBL.escribirEstudiante(txtCodigo.getText(), txtApellidos.getText(), txtNombre.getText(),
-                txtDirecion.getText(), txtDni.getText(), true, txtUsuario.getText(), txtContraseña.getText());
+         String mensaje="";
+        Estudiante alumno = new Estudiante(txtCodigo.getText(), txtApellidos.getText(), txtNombre.getText(), 
+                txtDirecion.getText(), txtDni.getText(), true,txtUsuario.getText(),txtContraseña.getText());
+        mensaje = AlumnoBL.escribirEstudiante(txtCodigo.getText(), txtApellidos.getText(), txtNombre.getText(), 
+                txtDirecion.getText(), txtDni.getText(), true,txtUsuario.getText(),txtContraseña.getText());
         JOptionPane.showMessageDialog(null, mensaje);
         estudiantes = (ArrayList<Estudiante>) AlumnoBL.llenarColeccion();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+       
         dispose();
         FrmAdministrador ventana = new FrmAdministrador();
         ventana.setVisible(true);
@@ -275,15 +280,15 @@ public class FrmRegistrarEstudiante extends javax.swing.JFrame {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel8MouseClicked
-    int xx, xy;
+    int xx,xy;
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         xx = evt.getX();
         xy = evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
-        Point p = MouseInfo.getPointerInfo().getLocation();
-        setLocation(p.x - xx, p.y - xy);
+       Point p = MouseInfo.getPointerInfo().getLocation();
+        setLocation(p.x-xx,p.y-xy);
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void txtDirecionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDirecionActionPerformed
@@ -307,6 +312,7 @@ public class FrmRegistrarEstudiante extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

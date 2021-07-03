@@ -8,12 +8,14 @@ package presentacion;
 import entidades.Matricula;
 import pdf.ClassPdf;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmCalificacion extends javax.swing.JFrame {
-
-    public static String cursos;
-    public static String notas;
-    public static Matricula matricula;
-
+public static String cursos;
+public static String notas;
+public static Matricula matricula;
     /**
      * Creates new form FrmCalificacion
      */
@@ -21,7 +23,7 @@ public class FrmCalificacion extends javax.swing.JFrame {
         initComponents();
         jTextArea1.setText(cursos);
         jTextArea2.setText(notas);
-
+        
     }
 
     /**
@@ -159,12 +161,13 @@ public class FrmCalificacion extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ClassPdf pdf = new ClassPdf(matricula);
-        pdf.crearPdf();
+       pdf.crearPdf();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

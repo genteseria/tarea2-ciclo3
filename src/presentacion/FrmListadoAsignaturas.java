@@ -7,6 +7,10 @@ package presentacion;
 
 import ModelosTabla.ModeloAsignatura;
 
+/**
+ *
+ * @author HP
+ */
 public class FrmListadoAsignaturas extends javax.swing.JFrame {
 
     /**
@@ -113,6 +117,7 @@ public class FrmListadoAsignaturas extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

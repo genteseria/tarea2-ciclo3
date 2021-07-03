@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entidades;
 
 /**
@@ -11,17 +12,18 @@ package entidades;
  */
 //Código, DNI, nombre, apellidos, dirección.
 public class Estudiante {
+    
+   private String codigo;
+   private String apellidos;
+   private String nombre;
+   private String direccion;
+   private String dni;
+   private boolean activo;
+   private String usuario;
+   private String contra;
 
-    private String codigo;
-    private String apellidos;
-    private String nombre;
-    private String direccion;
-    private String dni;
-    private boolean activo;
-    private String usuario;
-    private String contra;
-
-    //240
+   //240
+   
     public String getCodigo() {
         return codigo;
     }
@@ -62,6 +64,7 @@ public class Estudiante {
         this.direccion = direccion;
     }
 
+
     public boolean isActivo() {
         return activo;
     }
@@ -87,7 +90,7 @@ public class Estudiante {
     }
 
     public Estudiante(String codigo, String apellidos, String nombre, String direccion, String dni, boolean activo, String usuario, String contra) {
-
+       
         this.codigo = codigo;
         this.apellidos = apellidos;
         this.nombre = nombre;
@@ -96,18 +99,18 @@ public class Estudiante {
         this.activo = activo;
         this.usuario = usuario;
         this.contra = contra;
-
+        
     }
-
+    
     public int getTamaño() {
-        return (getCodigo().length() * 2 + 2
-                + getNombre().length() * 2 + 2
-                + getApellidos().length() * 2 + 2
-                + getDireccion().length() * 2 + 2
-                + getDni().length() * 2 + 2
-                + getUsuario().length() * 2 + 2
-                + getContra().length() * 2 + 2
-                + 1);
+        return (getCodigo().length()*2 + 2
+                + getNombre().length()*2+ 2
+                + getApellidos().length()*2+ 2
+                + getDireccion().length()*2+ 2
+                + getDni().length()*2+ 2
+                 + getUsuario().length()*2+ 2
+                 + getContra().length()*2+ 2
+                +1);
     }
-
+    
 }
