@@ -57,13 +57,11 @@ public class FrmAlumno extends javax.swing.JFrame {
         }else if(sele.equals("2021-I")){
             
             for (int i = 0; i < asignatu.size(); i++) {
-                
                 if(asignatu.get(i).getCiclo()==1){
                     if(asignatu.get(i).isEstado()){
                         muestreo.add(asignatu.get(i));
                     }
                 } 
-                
             }
             
             
@@ -338,7 +336,7 @@ public class FrmAlumno extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -471,5 +469,6 @@ public class FrmAlumno extends javax.swing.JFrame {
     private ArrayList<AsignaturaCalificacion> asignaturasSeleccionadas= new ArrayList<>();
     private ArrayList<Asignatura> asignaturas = FrmRegistrarAsignatura.asignaturas;
     public static ArrayList<Matricula> matriculas = new ArrayList();
+    public static ArrayList<Matricula> matriculasComparar = new ArrayList();
     private ArrayList<Asignatura> asignaturasVisualizar= new ArrayList<>();
 }

@@ -5,7 +5,6 @@
  */
 package presentacion;
 
-
 import entidades.Asignatura;
 import entidades.Estudiante;
 import entidades.Matricula;
@@ -34,12 +33,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         llenar();
     }
-    
-    public void llenar(){
+
+    public void llenar() {
         FrmRegistrarAsignatura.asignaturas = (ArrayList<Asignatura>) AsignaturaBL.llenarColeccion();
         FrmRegistrarEstudiante.estudiantes = (ArrayList<Estudiante>) AlumnoBL.llenarColeccion();
-        FrmAlumno.matriculas=(ArrayList<Matricula>) MatriculaBL.llenarColeccion();
-        
+        FrmAlumno.matriculas = (ArrayList<Matricula>) MatriculaBL.llenarColeccion();
+
 //        int nVeces=1;
 //        double nota = 21.0;
 //        boolean estado = true;
@@ -49,7 +48,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 //        fe = dateFormat.format(date);
 //        
-        
     }
 
     /**
@@ -214,20 +212,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //        FrmEstudiante ventana = new FrmEstudiante();
 //        ventana.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
-    int x,y;
+    int x, y;
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
-       x = evt.getX();
-       y = evt.getY();
+        x = evt.getX();
+        y = evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
         Point poin = MouseInfo.getPointerInfo().getLocation();
-        setLocation(poin.x-x,poin.y- y);
+        setLocation(poin.x - x, poin.y - y);
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-       dispose();
-        FrmAdministrador c =new FrmAdministrador();
+        dispose();
+        FrmAdministrador c = new FrmAdministrador();
         c.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -238,25 +236,25 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-         try {
+
+        try {
             String url = "ayuda.pdf";
             ProcessBuilder p = new ProcessBuilder();
-            
-            if (System.getProperty("os.name").contains("Windows")){
+
+            if (System.getProperty("os.name").contains("Windows")) {
                 p.command("cmd.exe", "/c", url);
             } else if (System.getProperty("os.name").contains("Linux")) {
                 p.command("xdg-open", url);
             } else {
                 p.command("open", url);
             }
-            
+
             p.start();
-            
+
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"No se pudo Abrir","Advertencia",2);
+            JOptionPane.showMessageDialog(null, "No se pudo Abrir", "Advertencia", 2);
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -42,30 +42,21 @@ public class FrmEstudiante extends javax.swing.JFrame {
         labelApellidos.setText(apellidos);
         labelDirrecion.setText(direccion);
         labelNombre.setText(nombre);
-
+        rellenarCampos();
+        
     }
     
-    public FrmEstudiante(Estudiante estudiante) {
-        initComponents();
-        movimiento();
-        this.estudiante = estudiante;
-       rellenarCampos();
-
-    }
+//    public FrmEstudiante(Estudiante estudiante) {
+//        initComponents();
+//        movimiento();
+//       rellenarCampos();
+//
+//    }
 
     
     public void rellenarCampos(){
         hora = new Hora(jLabelHora);
         hora.start();
-        
-        jButton2.setBackground(Color.BLACK);
-        jButton1.setBackground(Color.BLACK);
-        
-        
-        labelNombre.setText(estudiante.getNombre());
-        labelApellidos.setText(estudiante.getNombre());
-        labelNombre.setText(estudiante.getApellidos());
-        labelDirrecion.setText(estudiante.getDireccion());
     }
     
     public void movimiento(){
@@ -127,9 +118,9 @@ public class FrmEstudiante extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelCarrera = new javax.swing.JLabel();
         labelNombre = new javax.swing.JLabel();
+        jLabelHora = new javax.swing.JLabel();
         labelApellidos = new javax.swing.JLabel();
         labelDirrecion = new javax.swing.JLabel();
-        jLabelHora = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -195,6 +186,10 @@ public class FrmEstudiante extends javax.swing.JFrame {
         labelNombre.setText("Jonathan Smith");
         jPanel1.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 150, -1));
 
+        jLabelHora.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
+        jLabelHora.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 150, 50));
+
         labelApellidos.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         labelApellidos.setText("Mostacero Camacho");
         jPanel1.add(labelApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 130, -1));
@@ -202,11 +197,6 @@ public class FrmEstudiante extends javax.swing.JFrame {
         labelDirrecion.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         labelDirrecion.setText("Hipolito Unanue Mz \"K\"");
         jPanel1.add(labelDirrecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, 30));
-
-        jLabelHora.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelHora.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); // NOI18N
-        jLabelHora.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jLabelHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 110, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_u.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 470, -1));
