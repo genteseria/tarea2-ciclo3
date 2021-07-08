@@ -469,6 +469,5 @@ public class FrmAlumno extends javax.swing.JFrame {
     private ArrayList<AsignaturaCalificacion> asignaturasSeleccionadas= new ArrayList<>();
     private ArrayList<Asignatura> asignaturas = FrmRegistrarAsignatura.asignaturas;
     public static ArrayList<Matricula> matriculas = new ArrayList();
-    public static ArrayList<Matricula> matriculasComparar = new ArrayList();
     private ArrayList<Asignatura> asignaturasVisualizar= new ArrayList<>();
 }
